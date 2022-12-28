@@ -1,6 +1,6 @@
 # MorseUNO
 Convert typed text to Morse code
-/*
+
 
 MorseUNO
 
@@ -17,4 +17,4 @@ INSTRUCTIONS
 Built-in LED will flash morse code and by hooking a buzzer to pin 12 will sound in morse code.
 Adding a relay to pin 12 and connecting the relay contacts to a transmitter key jack, the radio will transmit morse code.
 
-*/
+
