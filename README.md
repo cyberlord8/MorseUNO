@@ -2,7 +2,7 @@
 
 Morse Code Sketch - Copyright Timothy Millea 2022 - Released under Creative Commons Attribution 4.0 International License
 
-Takes a String variable and flashes on board led and buzzes passive speaker in morse code
+Takes a String variable and flashes on board led and buzzes speaker in morse code
 
 INSTRUCTIONS
 1. Open Serial Monitor console
