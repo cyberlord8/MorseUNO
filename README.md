@@ -1,12 +1,8 @@
 # MorseUNO
-Convert typed text to Morse code
-/*
-
-MorseUNO
 
 Morse Code Sketch - Copyright Timothy Millea 2022 - Released under Creative Commons Attribution 4.0 International License
 
-Takes a String variable and flashes on board led and buzzes passive speaker in morse code
+Takes a String variable and flashes on board led and buzzes speaker in morse code
 
 INSTRUCTIONS
 1. Open Serial Monitor console
@@ -17,4 +13,4 @@ INSTRUCTIONS
 Built-in LED will flash morse code and by hooking a buzzer to pin 12 will sound in morse code.
 Adding a relay to pin 12 and connecting the relay contacts to a transmitter key jack, the radio will transmit morse code.
 
-*/
+
