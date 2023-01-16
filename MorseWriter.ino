@@ -17,6 +17,13 @@ Adding a relay to pin 12 and connecting the relay contacts to a transmitter key 
 
 */
 
+/* TODO
+ 1. Resend last sentence (complete)
+ 2. Memory variables for frequently used strings
+
+ */
+
+
 //define variables
 int morseLED = 13;  //onboard LED
 int morseSND = 12;  //pin for speaker
@@ -29,6 +36,7 @@ int delayCharSpacing = 3 * multiplier;
 int delayWordSpacing = 7 * multiplier;
 bool stringComplete = false;
 String inputString;  // a string to hold incoming data
+String lastString;   // a string to hold last sentence
 
 void setup() {
   // put your setup code here, to run once:
@@ -44,6 +52,7 @@ void setup() {
   Serial.println("~ Command mode");
   Serial.println("Current commands:");
   Serial.println("~WPM - lists current or sets new WPM speed (~WPM or ~WPM 25)");
+  Serial.println("~RS - resends last sentence");
   Serial.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
   Serial.print("Current WPM: ");
   Serial.println(WPM);
@@ -67,6 +76,8 @@ void loop() {
         if (inputString.toInt() == 0) {
           Serial.print("Current WPM: ");
           Serial.println(WPM);
+          inputString = "";
+          stringComplete = false;
           return;
         }
         WPM = inputString.toInt();
@@ -78,13 +89,22 @@ void loop() {
         delayDAH = 3 * multiplier;
         delayCharSpacing = 3 * multiplier;
         delayWordSpacing = 7 * multiplier;
+        inputString = "";
+        stringComplete = false;
+      }
+      if (inputString.startsWith("RS")) {
+        flashSentence(lastString);
+        Serial.println("");
+        inputString = "";
+        stringComplete = false;
       }
     } else {
       flashSentence(inputString);
       Serial.println("");
+      lastString = inputString;
+      inputString = "";
+      stringComplete = false;
     }
-    inputString = "";
-    stringComplete = false;
   }  //if read serial console complete
 }  //loop()
 
